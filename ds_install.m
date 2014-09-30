@@ -7,15 +7,45 @@
 % IMPORTANT: before you run the script navigate your Current Folder to the
 % DSP Sandbox repo root, otherwise the installation will be unsuccessful..
 
-addpath(pwd);
-addpath(strcat(pwd,'\.core_system'));
-addpath(strcat(pwd,'\library'));
+currentFolders = dir;
+result = 0;
 
-[name, version] = ds_getlibrarydata();
+for k=1:length(currentFolders)
+    if strcmp(currentFolders(k).name,'.core_system')
+        result = result + 1;
+    end
+    if strcmp(currentFolders(k).name,'.git')
+        result = result + 1;
+    end
+end
 
-disp(' ');
-disp([name, ' ', version, ' successfully installed on your system!']);
-disp(' ');
-clear name version ans
+if result == 2 
+    rootDirectory = strcat(pwd,'\');
+    addpath(pwd);
+    addpath(strcat(rootDirectory,'.core_system'));
+    
+    allLibraryDirectories = regexp(genpath('library'),['[^;]*'],'match');
+    
+    for k=1:length(allLibraryDirectories)
+        newPath = strcat(rootDirectory,allLibraryDirectories{k});
+        addpath(newPath);
+    end
+
+    savepath;
+
+    [name, version] = ds_getlibrarydata();
+
+    disp(' ');
+    disp([name, ' ', version, ' successfully installed on your system!']);
+    disp(' ');
+    clear name version newPath rootDirectory allLibraryDirectories
+else
+    error('Error: You are in the wrong folder! Make sure you navigate to the root folder of the repo!');
+end
+
+clear ans currentFolders result k
+
+
+
 
 % Created by Tibor Simon at 2014.09.30. Budapest
