@@ -19,3 +19,7 @@ By uninstalling the library, you simply remove the path's added before to the gl
 To uninstall this library run the _ds_uninstall.m_ script.
 
 It is not necessary to unistall the DSP sandbox from your system. If you delete the repo, nothing will happen. But if you want to keep your Matlab path clean an updated, you should run the uninstall script before you delete the repo.
+
+---
+
+The __master__ branch contains the _Matlab DSP Sandbox_ library, and the __core_template__ branch contains the latest version of the core library management system, that allows anybody to start a fresh Matlab library easily.
