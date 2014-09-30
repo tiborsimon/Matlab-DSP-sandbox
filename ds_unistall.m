@@ -11,10 +11,11 @@
 % IMPORTANT: before you run the script navigate your Current Folder to the
 % DSP Sandbox repo root, otherwise the installation will be unsuccessful..
 
-rmpath(pwd);                     % install the repo root 
-rmpath(strcat(pwd,'\library'));  % install the library folder
-
 [name, version] = ds_getlibrarydata();
+
+rmpath(pwd);
+rmpath(strcat(pwd,'\.core_system'));
+rmpath(strcat(pwd,'\library'));
 
 disp(' ');
 disp([name, ' ', version, ' successfully removed from your system!']);
