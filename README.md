@@ -6,7 +6,7 @@ A repo full of useful, DSP related functions and scripts
 
 ##Install##
 
-To install this Matlab DSP Sandbox you should run the _st_install.m_ script.
+To install this Matlab DSP Sandbox you should run the _ds_install.m_ script.
 
 __IMPORTANT__: before you run the script navigate your Current Folder to the DSP Sandbox repo root, otherwise the installation will be unsuccessful..
 
