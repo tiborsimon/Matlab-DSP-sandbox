@@ -19,6 +19,7 @@ rmpath(strcat(pwd,'\library'));
 
 disp(' ');
 disp([name, ' ', version, ' successfully removed from your system!']);
+disp(' ');
 clear name version ans
 
 % Created by Tibor Simon at 2014.09.30. Budapest
