@@ -33,19 +33,16 @@ if result == 2
 
     savepath;
 
-    [name, version] = ds_getlibrarydata();
+    [name, version] = core_getlibrarydata();
 
     disp(' ');
     disp([name, ' ', version, ' successfully installed on your system!']);
     disp(' ');
     clear name version newPath rootDirectory allLibraryDirectories
 else
-    error('Error: You are in the wrong folder! Make sure you navigate to the root folder of the repo!');
+    error('Error: You are in the wrong folder! Make sure you navigate to the root folder of your library that contains the install script!');
 end
 
 clear ans currentFolders result k
-
-
-
 
 % Created by Tibor Simon at 2014.09.30. Budapest

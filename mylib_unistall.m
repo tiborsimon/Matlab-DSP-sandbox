@@ -24,27 +24,31 @@ for k=1:length(currentFolders);
 end
 
 if result == 2
-    [name, version] = ds_getlibrarydata();
-    
-    rootDirectory = strcat(pwd,'\');
-    rmpath(pwd);
-    rmpath(strcat(rootDirectory,'.core_system'));
-    
-    allLibraryDirectories = regexp(genpath('library'),['[^;]*'],'match');
-    
-    for k=1:length(allLibraryDirectories)
-        newPath = strcat(rootDirectory,allLibraryDirectories{k});
-        rmpath(newPath);
-    end
-    
-    savepath;
-    
-    disp(' ');
-    disp([name, ' ', version, ' successfully removed from your system!']);
-    disp(' ');
-    clear name version newPath rootDirectory allLibraryDirectories
+    try
+        [name, version] = core_getlibrarydata();
+
+        rootDirectory = strcat(pwd,'\');
+        rmpath(pwd);
+        rmpath(strcat(rootDirectory,'.core_system'));
+
+        allLibraryDirectories = regexp(genpath('library'),['[^;]*'],'match');
+
+        for k=1:length(allLibraryDirectories)
+            newPath = strcat(rootDirectory,allLibraryDirectories{k});
+            rmpath(newPath);
+        end
+
+        savepath;
+
+        disp(' ');
+        disp([name, ' ', version, ' successfully removed from your system!']);
+        disp(' ');
+        clear name version newPath rootDirectory allLibraryDirectories
+    catch err
+        error('Error: Your library has been uninstalled already..')
+    end 
 else
-    error('Error: You are in the wrong folder! Make sure you navigate to the root folder of the repo!');
+    error('Error: You are in the wrong folder! Make sure you navigate to the root folder of your library that contains the uninstall script!');
 end
 
 clear ans currentFolders result k
