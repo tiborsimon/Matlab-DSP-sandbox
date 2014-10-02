@@ -11,22 +11,11 @@
 % IMPORTANT: before you run the script navigate your Current Folder to the
 % DSP Sandbox repo root, otherwise the installation will be unsuccessful..
 
-currentFolders = dir;
-result = 0;
 
-for k=1:length(currentFolders);
-    if strcmp(currentFolders(k).name,'.core_system')
-        result = result + 1;
-    end
-    if strcmp(currentFolders(k).name,'.git')
-        result = result + 1;
-    end
-end
-
-if result == 2
-    try
+try
+    if core_checkenvironment(dir);
         [name, version] = core_getlibrarydata();
-
+        
         rootDirectory = strcat(pwd,'\');
         rmpath(pwd);
         rmpath(strcat(rootDirectory,'.core_system'));
@@ -44,13 +33,14 @@ if result == 2
         disp([name, ' ', version, ' successfully removed from your system!']);
         disp(' ');
         clear name version newPath rootDirectory allLibraryDirectories
-    catch err
-        error('Error: Your library has been uninstalled already..')
-    end 
-else
-    error('Error: You are in the wrong folder! Make sure you navigate to the root folder of your library that contains the uninstall script!');
-end
+    else
+        error('Error: You are in the wrong folder! Make sure you navigate to the root folder of your library that contains the uninstall script!');
+    end
+catch err
+    clear err;
+    error('Error: Your library has been uninstalled already..')
+end 
 
 clear ans currentFolders result k
 
-% Created by Tibor Simon at 2014.09.30. Budapest
+% Created by Tibor Simon at 2014.10.02. Budapest
