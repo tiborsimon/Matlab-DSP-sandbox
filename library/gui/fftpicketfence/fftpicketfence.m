@@ -72,15 +72,14 @@ guidata(hObject, handles);
 function draw(handles)
 
 Fs = 3000;
-N = 50;
-f = 1200;
+N = 30;
 slider = get(handles.slider1,'Value');
 slider3 = get(handles.slider3,'Value');
 
 
 
-f = 1500*(slider3) + 10*(slider-.5);
-f(f>1500) = 1500;
+f = (Fs/2)*(slider3) + (Fs/100)*(slider-.5);
+f(f>(Fs/2)) = (Fs/2);
 f(f<0) = 0;
 
 set(handles.edit2,'String',num2str(f));
@@ -93,20 +92,45 @@ N = length(signal);
 SIGNAL = fft(signal)/N;
 s = abs(SIGNAL);
 
-Nz = N*1000;
+Nz = N*50;
 sz = abs(fft(signal,Nz)/N);
 
 
 f = (0:N-1)/N*Fs;
 fz = (0:Nz-1)/Nz*Fs;
 
-plot(handles.axes1,fz(1:end/2),sz(1:end/2),'r')
+
+
+
+
+plot(handles.axes1,fz,sz,'r','LineSmoothing','on')
 ylim(handles.axes1,[0 .6])
+
 hold(handles.axes1,'on');
 
-stem(handles.axes1,f(1:end/2),s(1:end/2),'fill')
+
+stem(handles.axes1,f,s,'fill')
 ylim(handles.axes1,[0 .6])
+
+
+grid(handles.axes1)
 hold(handles.axes1,'off');
+
+
+
+
+% plot(handles.axes1,fz(1:end/2),sz(1:end/2),'r.','LineSmoothing','on')
+% ylim(handles.axes1,[0 .6])
+% 
+% hold(handles.axes1,'on');
+% 
+% 
+% stem(handles.axes1,f(1:end/2),s(1:end/2),'fill')
+% ylim(handles.axes1,[0 .6])
+% 
+% 
+% grid(handles.axes1)
+% hold(handles.axes1,'off');
 
 
 
