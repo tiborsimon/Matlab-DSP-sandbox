@@ -1,4 +1,4 @@
-function [ signal ] = ds_sin_tf( lengthInSeconds, frequency, Fs, phase  )
+function [ signal ] = ds_sin_tf( lengthInSeconds, frequency, fs, phase  )
 %DS_SIN_TF Sine wave generation given a fixed length, frequency and sample
 %rate.
 %
@@ -15,9 +15,10 @@ if nargin < 3
     error('Not enough arguments! At least 3 arguments are mandatory!');
 end
 
-n = 0:1/Fs:lengthInSeconds;
+n = 0:1/fs:lengthInSeconds-1/fs;
 phase = phase*pi/180;
 signal = sin(2*pi*frequency*n + phase);
+signal = signal(:);
 
 end
 

@@ -1,4 +1,4 @@
-function [ signal ] = ds_sin_fp( frequency, numberOfPeriodsOfIt, Fs, phase )
+function [ signal ] = ds_sin_fp( frequency, numberOfPeriodsOfIt, fs, phase )
 %DS_SIN_FP Sine wave generation given a fixed frequency, number of periods 
 %of it and the sample rate.
 %
@@ -15,9 +15,10 @@ if nargin < 3
     error('Not enough arguments! At least 3 arguments are mandatory!');
 end
 
-n = 0:1/Fs:(numberOfPeriodsOfIt/frequency);
+n = 0:1/fs:(numberOfPeriodsOfIt/frequency);
 phase = phase*pi/180;
 signal = sin(2*pi*frequency*n + phase);
+signal = signal(:);
 
 end
 

@@ -18,6 +18,7 @@ n = 0:numberOfSamples-1;
 n = n'/numberOfSamples;
 phase = phase*pi/180;
 signal = sin(2*pi*numberOfPeriodsInIt*n + phase);
+signal = signal(:);
 
 end
 

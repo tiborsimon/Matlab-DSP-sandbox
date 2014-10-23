@@ -1,4 +1,4 @@
-function [ signal ] = ds_sin_nf( numberOfSamples, frequency, Fs, phase )
+function [ signal ] = ds_sin_nf( numberOfSamples, frequency, fs, phase )
 %DS_SIN_NF Sine wave generation given a fixed number of samples, frequency 
 %and the sample rate.
 %
@@ -16,9 +16,10 @@ if nargin < 3
 end
 
 n = 0:numberOfSamples-1;
-n = n*(1/Fs);
+n = n*(1/fs);
 phase = phase*pi/180;
 signal = sin(2*pi*frequency*n + phase);
+signal = signal(:);
 
 end
 
