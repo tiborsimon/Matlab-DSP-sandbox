@@ -1,4 +1,4 @@
-function [] = ds_fft( signal, Fs )
+function [] = ds_fft( signal, fs )
 %DS_FFT Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -13,8 +13,8 @@ Nz = N*100;
 sz = abs(fft(signal,Nz)/N);
 
 
-f = (0:N-1)/N*Fs;
-fz = (0:Nz-1)/Nz*Fs;
+f = (0:N-1)/N*fs;
+fz = (0:Nz-1)/Nz*fs;
 
 hold on
 
