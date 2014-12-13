@@ -15,10 +15,25 @@ if nargin < 3
     error('Not enough arguments! At least 3 arguments are mandatory!');
 end
 
+
+frequency = frequency(:);
+s = size(frequency);
+
+
 n = 0:1/fs:lengthInSeconds-1/fs;
 phase = phase*pi/180;
-signal = sin(2*pi*frequency*n + phase);
+signal = sin(2*pi*frequency(1)*n + phase);
+if s(1) > 1 
+    for k=2:s(1)
+        signal = signal + sin(2*pi*frequency(k)*n + phase);
+    end    
+end
+
+
 signal = signal(:);
+signal = signal./max(signal);
+
+
 
 end
 
