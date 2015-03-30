@@ -1,4 +1,4 @@
-function [] = ds_fft_core( signal, data )
+function [f, S] = ds_fft_core( signal, data )
 %DS_FFT_CORE Summary of this function goes here
 %   Detailed explanation goes here
 s = size(signal);

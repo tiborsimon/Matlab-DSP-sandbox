@@ -1,4 +1,4 @@
-function [] = ds_fft_n_db( signal, fs )
+function [f, S] = ds_fft_n_db( signal, fs )
 %DS_FFT Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -13,7 +13,7 @@ data.interpol = 100;
 data.isdB = 1;
 data.norm = 1;
 
-ds_fft_core(signal,data);
+[f,S] = ds_fft_core(signal,data);
 
 end
 

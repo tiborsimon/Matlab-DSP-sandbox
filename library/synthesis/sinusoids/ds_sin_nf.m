@@ -3,8 +3,8 @@ function [ signal ] = ds_sin_nf( numberOfSamples, frequency, fs, phase )
 %and the sample rate.
 %
 %   Arguments:
-%       numberOfSamples [Hz]
-%       frequency       []
+%       numberOfSamples []
+%       frequency       [Hz]
 %       Fs              [Hz]
 %       phase           [degree] <optional>
 
